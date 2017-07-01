@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'com.bmuschko:gradle-tomcat-plugin:2.3'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat-base'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+
+dependencies {
+	def tomcatVersion = '8.0.26'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+			"org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+			"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+
+	compile('org.springframework.boot:spring-boot-starter-web')
+	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// providedRuntime ('org.springframework.boot:spring-boot-starter-tomcat')
+}
