@@ -22,7 +22,7 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
-	maven { url "http://repo.spring.io/libs-snapshot" }
+	maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
 }
 
 
@@ -33,6 +33,9 @@ dependencies {
 			"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("mysql:mysql-connector-java:5.1.13")
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
 	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	// providedRuntime ('org.springframework.boot:spring-boot-starter-tomcat')

@@ -1,0 +1,17 @@
+<md-card *ngIf="bike" style="width: 30%">
+
+  <md-input-container>
+    <input mdInput [(ngModel)]="bike.model" placeholder="Model" name="model">
+  </md-input-container><br>
+
+  <md-input-container>
+    <input mdInput [(ngModel)]="bike.manufacturer" placeholder="Manufacturer" name="manufacturer">
+  </md-input-container><br>
+
+  <md-card-actions>
+    <button md-button (click)="goBack()"> Back </button>
+    <button md-button (click)="updateBike()"> Update </button>
+  </md-card-actions>
+
+</md-card>
+
