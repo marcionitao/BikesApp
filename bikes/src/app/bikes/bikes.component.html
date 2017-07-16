@@ -1,5 +1,46 @@
-<h2>Bikes</h2>
+<legend>Add new Bike</legend>
 
+<div class="col-md-2">
+  <img src="../assets/images/moto_2.jpg" id="bike"/>
+</div>
+
+<div class="col-md-8">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Add Bike</div>
+    <form class="form-horizontal">
+
+      <div>
+        <div class="col-lg-12">
+          <label class="control-label">Model</label>
+          <!--<label for="model" class="control-label">Model/</label>-->
+        </div>
+        <div class="col-lg-12">
+         <input type="text" class="form-control" id="model" placeholder="Model">
+        </div>
+      </div>
+
+      <div>
+        <div class="col-lg-12">
+          <label class="control-label">Manufacturer</label>
+          <!--<label for="manufacturer" class="control-label">Manufacturer/</label>-->
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <input type="text" class="form-control" id="manufacturer" placeholder="Manufacturer">
+      </div>
+
+      <button style="margin-left: 15px; margin-bottom: 12px; margin-top: 25px;" type="submit" class="btn btn-danger">Submit</button>
+
+    </form>
+  </div>
+</div>
+
+<div class="col-md-2">
+
+</div>
+
+<!--
 <md-input-container style="width:30%">
   <input mdInput [(ngModel)]="newBike.model" placeholder="Model" name="model">
 </md-input-container><br>
@@ -13,27 +54,4 @@
     {{bike.model}} <button md-raised-button (click)="deleteBike(bike); $event.stopPropagation()">Delete</button>
   </md-list-item>
 </md-list>
-
-<!--<div class="col-md-3">
-
-</div>
-
-<div class="col-md-6">
-  <div class="panel panel-primary">
-
-    <div class="panel-heading">Bikes</div>
-    <div class="panel-body">
-      <p>My Bikes List...</p>
-    </div>
-
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info" *ngFor="let bike of bikes">
-        <h5>{{bike.id}} - {{bike.manufacturer}} - {{bike.model}}</h5>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="col-md-3">
-
-</div>-->
+-->

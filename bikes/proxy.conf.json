@@ -1,3 +1,4 @@
+// localhost:8080/api/bikes/allBikes
 {
   "/api/*": {
     "target": "http://localhost:8080",
@@ -5,3 +6,4 @@
     "logLevel": "debug"
   }
 }
+

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Bike} from '../bike';
-import {Router} from '@angular/router';
-import {BikeService} from "../bike.service";
+import { Component, OnInit } from '@angular/core';
+import { Bike } from '../model/bike';
+import { Router } from '@angular/router';
+import { BikeService } from '../service/bike.service';
 
 @Component({
   selector: 'app-bikes',
@@ -19,26 +19,19 @@ export class BikesComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.bikeService.getBikes().then(
-      response => {
-        console.log(response),
-          this.bikes = response
-      });
-    this.newBike = new Bike();
+       this.newBike = new Bike();// para mostrar todas as Bikes
   }
 
   createBike(bike: Bike): void {
-
-    this.bikeService.createBike(bike).then(
+    this.bikeService.createBike(bike).subscribe(
       bike => {
-        this.bikes.push(bike);
+        this.bikes.push(bike);// "push" é para enviar os dados
         this.selectedBike = null;
       });
   }
 
   deleteBike(bike: Bike): void {
-    this.bikeService.deleteBike(bike).then(
+    this.bikeService.deleteBike(bike).subscribe(
       () => {
         this.bikes = this.bikes.filter(h => h !== bike);
         if (this.selectedBike === bike) {

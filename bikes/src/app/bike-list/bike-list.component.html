@@ -1,0 +1,24 @@
+<legend>List of Bikes</legend>
+<div class="col-md-2">
+  <img src="../assets/images/moto.jpg" id="bike"/>
+</div>
+
+<div class="col-md-8">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Bikes</div>
+    <div class="panel-body">
+      <p>My Bikes List...</p>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info" *ngFor="let bike of bikes">
+        <h5>{{bike.id}} - {{bike.manufacturer}} - {{bike.model}}</h5>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-2">
+
+</div>
