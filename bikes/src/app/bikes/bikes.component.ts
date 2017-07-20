@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Bike } from '../model/bike';
 import { Router } from '@angular/router';
 import { BikeService } from '../service/bike.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bikes',
@@ -13,21 +14,41 @@ export class BikesComponent implements OnInit {
   bikes: Bike[];
   selectedBike: Bike;
   newBike: Bike;
+  formulario: FormGroup;
+
+  @Input() bike: Bike = {
+    id: undefined,
+    model: '',
+    manufacturer: ''
+  };
 
   constructor(private router: Router,
-              private bikeService: BikeService) {
+    private bikeService: BikeService,
+    private formBuilder: FormBuilder) {
+
+    this.formulario = this.formBuilder.group({
+      'id': [this.bike.id],
+      'model': [this.bike.model, Validators.required],
+      'manufacturer': [this.bike.manufacturer, Validators.required]
+    });
   }
 
   ngOnInit() {
-       this.newBike = new Bike();// para mostrar todas as Bikes
+    this.newBike = new Bike(); // para mostrar todas as Bikes
   }
 
-  createBike(bike: Bike): void {
-    this.bikeService.createBike(bike).subscribe(
-      bike => {
-        this.bikes.push(bike);// "push" é para enviar os dados
-        this.selectedBike = null;
+  onSubmit(): void {
+    console.log(this.formulario.value);
+    const bikes = this.formulario.value as Bike;
+
+    if (this.formulario.valid) {
+      this.bikeService.createBike(bikes).subscribe(
+      response => {
+        console.log('response', response);
+        this.router.navigate(['/list']);// apos criar volta para lista
+       // this.selectedBike = null;
       });
+    }
   }
 
   deleteBike(bike: Bike): void {

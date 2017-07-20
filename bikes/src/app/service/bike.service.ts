@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Bike } from '../model/bike';
 
@@ -12,7 +13,8 @@ export class BikeService {
   constructor(private http: Http) { }
 
   // tslint:disable-next-line:member-ordering
-  private bikesUrl = '/api/bikes';
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+  bikesUrl = '/api/bikes';
 
   getBikes() {
     return this.http.get(this.bikesUrl + '/allBikes')
@@ -42,9 +44,11 @@ export class BikeService {
     }
   */
   createBike(bike: Bike): Observable<Bike> {
-    return this.http.post(this.bikesUrl + '/createBike', JSON.stringify(bike))
+
+    return this.http.post(this.bikesUrl + '/createBike', JSON.stringify(bike), { headers: this.headers })
       .map(response => response.json() as Bike)
       .catch(this.handleError);
+
   }
   /*
     updateBike(bike: Bike): Promise<Bike> {

@@ -12,8 +12,8 @@
     </div>
 
     <ul class="list-group">
-      <li class="list-group-item list-group-item-info" *ngFor="let bike of bikes">
-        <h5>{{bike.id}} - {{bike.manufacturer}} - {{bike.model}}</h5>
+      <li class="list-group-item list-group-item-info" *ngFor="let bike of bikes" (click)="showInfo(bike)" >
+        <h5>{{bike.id}} - {{bike.manufacturer}} - {{bike.model}}</h5> <button class="btn btn-danger" (click)="deleteBike(bike); $event.stopPropagation()">Delete</button>
       </li>
     </ul>
   </div>

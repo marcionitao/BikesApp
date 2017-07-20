@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Bike {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE )
+    @GeneratedValue(strategy = GenerationType.AUTO) //for autonumber
     private Long id;
     private String model;
     private String manufacturer;

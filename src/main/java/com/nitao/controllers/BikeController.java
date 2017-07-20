@@ -20,12 +20,12 @@ public class BikeController {
     public BikeController(BikesRepository bikesRepository) {
         this.bikesRepository = bikesRepository;
     }
-
+/*
     @RequestMapping("/")
     public String home() {
         return "index";
     }
-
+*/
     @GetMapping("/allBikes")
     public List<Bike> getAllBikes() {
 
