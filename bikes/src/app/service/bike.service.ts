@@ -22,13 +22,6 @@ export class BikeService {
     //  .toPromise();// executa uma function e retorna JSON
   }
 
-  /*  getBike(id: number): Promise<Bike> {
-     // const url = `${this.bikesUrl}/getBike/${id}`;
-      const url = this.bikesUrl+/getBike/+id;
-      return this.http.get(url)
-        .toPromise()
-        .then(response => response.json() as Bike);
-    }*/
   getBike(id: number): Observable<Bike> {
     // const url = `${this.bikesUrl}/getBike/${id}`;
     const url = this.bikesUrl + /getBike/ + id;
@@ -36,13 +29,7 @@ export class BikeService {
       .map(response => response.json() as Bike)
       .catch(this.handleError);
   }
-  /*
-    createBike(bike: Bike): Promise<Bike> {
-      return this.http.post(this.bikesUrl + "/createBike", JSON.stringify(bike))
-        .toPromise()
-        .then(res => res.json() as Bike);
-    }
-  */
+
   createBike(bike: Bike): Observable<Bike> {
 
     return this.http.post(this.bikesUrl + '/createBike', JSON.stringify(bike), { headers: this.headers })
@@ -50,27 +37,13 @@ export class BikeService {
       .catch(this.handleError);
 
   }
-  /*
-    updateBike(bike: Bike): Promise<Bike> {
-      return this.http
-        .post(this.bikesUrl + "/updateBike", JSON.stringify(bike))
-        .toPromise()
-        .then(() => bike);
-    }
-  */
+
   updateBike(bike: Bike): Observable<Bike> {
     return this.http.post(this.bikesUrl + '/updateBike', JSON.stringify(bike))
       .map(() => bike)
       .catch(this.handleError);
   }
-  /*
-    deleteBike(bike: Bike): Promise<void> {
-      const url = `${this.bikesUrl}/deleteBike/${bike.id}`;
-      return this.http.get(url)
-        .toPromise()
-        .then(() => null);
-    }
-    */
+
   deleteBike(bike: Bike): Observable<void> {
     const url = `${this.bikesUrl}/deleteBike/${bike.id}`;
     return this.http.get(url)

@@ -1,21 +1,46 @@
-<legend>List of Bikes</legend>
+<legend id="title">List of Bikes</legend>
 <div class="col-md-2">
-  <img src="../assets/images/moto.jpg" id="bike"/>
+  <img src="../assets/images/moto.jpg" id="bike" />
 </div>
 
 <div class="col-md-8">
   <div class="panel panel-default">
 
-    <div class="panel-heading">Bikes</div>
-    <div class="panel-body">
-      <p>My Bikes List...</p>
-    </div>
-
+    <div class="panel-heading">All Bikes</div>
+    <!--
     <ul class="list-group">
-      <li class="list-group-item list-group-item-info" *ngFor="let bike of bikes" (click)="showInfo(bike)" >
-        <h5>{{bike.id}} - {{bike.manufacturer}} - {{bike.model}}</h5> <button class="btn btn-danger" (click)="deleteBike(bike); $event.stopPropagation()">Delete</button>
+      <li class="list-group-item list-group-item-info" *ngFor="let bike of bikes" >
+        <strong>Id: </strong>{{bike.id}}<br>
+        <strong>Manufacturer: </strong>{{bike.manufacturer}}<br>
+        <strong>Model: </strong>{{bike.model}}<br>
+        <br>
+        <button class="btn btn-danger" (click)="deleteBike(bike); $event.stopPropagation()">Delete</button>
+        <button class="btn btn-info" (click)="showInfo(bike); $event.stopPropagation()">Show Bike</button>
       </li>
     </ul>
+    -->
+
+      <table class="table table-responsive">
+        <thead>
+          <tr class="warning">
+            <th>#</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Delete</th>
+            <th>Show</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bike of bikes">
+            <td>{{bike.id}}</td>
+            <td>{{bike.manufacturer}}</td>
+            <td>{{bike.model}}</td>
+            <td><button class="btn btn-danger" (click)="deleteBike(bike); $event.stopPropagation()">X</button></td>
+            <td><button class="btn btn-info" (click)="showInfo(bike); $event.stopPropagation()">oo</button></td>
+          </tr>
+        </tbody>
+      </table>
+
   </div>
 </div>
 

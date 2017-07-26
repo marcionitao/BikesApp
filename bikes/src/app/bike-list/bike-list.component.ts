@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class BikeListComponent implements OnInit {
 
   bikes: Bike[];
+  selectedBike: Bike;
 
   constructor(private router: Router,
               private bikeService: BikeService) {
@@ -28,6 +29,21 @@ export class BikeListComponent implements OnInit {
         console.log(response),
           this.bikes = response;
       });
+  }
+
+  deleteBike(bike: Bike): void {
+    this.bikeService.deleteBike(bike).subscribe(
+      () => {
+        this.bikes = this.bikes.filter(h => h !== bike);
+        if (this.selectedBike === bike) {
+          this.selectedBike = null;
+        }
+      });
+  }
+
+  showInfo(bike: Bike): void {
+    this.selectedBike = bike;
+    this.router.navigate(['/information', this.selectedBike.id]);
   }
 
 }

@@ -51,18 +51,4 @@ export class BikesComponent implements OnInit {
     }
   }
 
-  deleteBike(bike: Bike): void {
-    this.bikeService.deleteBike(bike).subscribe(
-      () => {
-        this.bikes = this.bikes.filter(h => h !== bike);
-        if (this.selectedBike === bike) {
-          this.selectedBike = null;
-        }
-      });
-  }
-
-  showInfo(bike: Bike): void {
-    this.selectedBike = bike;
-    this.router.navigate(['/information', this.selectedBike.id]);
-  }
 }

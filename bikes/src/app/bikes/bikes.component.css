@@ -2,3 +2,9 @@
     width: 150px;
     /*margin-top: 50px;*/
 }
+
+#title{
+    font-size: 24px;
+    font-family: 'Jockey One', sans-serif;
+    color: grey;
+}
